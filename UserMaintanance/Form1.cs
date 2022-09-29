@@ -23,6 +23,7 @@ namespace UserMaintanance
             lblFullName.Text = Resource1.FullName;
             btnAdd.Text = Resource1.Add;
             btnIras.Text = Resource1.Write;     // hogy ne kelljen módosítani a kódot ha címkét cserélünk
+            btnTorles.Text = Resource1.Delete;
 
             listUsers.DataSource = users; 
             listUsers.ValueMember = "ID";
@@ -56,6 +57,12 @@ namespace UserMaintanance
                     sw.WriteLine();
                 }
             }
+        }
+
+        private void btnTorles_Click(object sender, EventArgs e)
+        {
+            var i = listUsers.SelectedItem;
+            users.Remove((User)i);
         }
     }
 }

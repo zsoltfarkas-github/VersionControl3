@@ -34,6 +34,7 @@ namespace UserMaintanance
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnIras = new System.Windows.Forms.Button();
+            this.btnTorles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listUsers
@@ -80,11 +81,22 @@ namespace UserMaintanance
             this.btnIras.UseVisualStyleBackColor = true;
             this.btnIras.Click += new System.EventHandler(this.btnIras_Click);
             // 
+            // btnTorles
+            // 
+            this.btnTorles.Location = new System.Drawing.Point(243, 183);
+            this.btnTorles.Name = "btnTorles";
+            this.btnTorles.Size = new System.Drawing.Size(212, 40);
+            this.btnTorles.TabIndex = 7;
+            this.btnTorles.Text = "button1";
+            this.btnTorles.UseVisualStyleBackColor = true;
+            this.btnTorles.Click += new System.EventHandler(this.btnTorles_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTorles);
             this.Controls.Add(this.btnIras);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtFullName);
@@ -104,6 +116,7 @@ namespace UserMaintanance
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnIras;
+        private System.Windows.Forms.Button btnTorles;
     }
 }
 
