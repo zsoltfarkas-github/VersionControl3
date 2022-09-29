@@ -19,8 +19,7 @@ namespace UserMaintanance
         public Form1()
         {
             InitializeComponent();
-            lblLastName.Text = Resource1.LastName;
-            lblFirstName.Text = Resource1.FirstName;
+            lblFullName.Text = Resource1.FullName;
             btnAdd.Text = Resource1.Add;                // hogy ne kelljen módosítani a kódot ha címkét cserélünk
 
             listUsers.DataSource = users; 
@@ -33,8 +32,7 @@ namespace UserMaintanance
         {
             var u = new User()
             {
-                LastName = txtLastName.Text,
-                FirstName = txtFirstName.Text
+                FullName = txtFullName.Text     
             };
             users.Add(u);                       // létrehozás, értékadás és hozzáadás
         }
