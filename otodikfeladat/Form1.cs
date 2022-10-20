@@ -1,4 +1,5 @@
-﻿using otodikfeladat.MnbServiceReference;
+﻿using otodikfeladat.Entities;
+using otodikfeladat.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,14 @@ namespace otodikfeladat
 {
     public partial class Form1 : Form
     {
+
+        BindingList<RateData> Rates = new BindingList<RateData>();
+
         public Form1()
         {
             InitializeComponent();
 
+            dataGridView1.DataSource = Rates;
             hivas();
         }
 
