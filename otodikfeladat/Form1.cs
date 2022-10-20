@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace otodikfeladat
 {
@@ -16,6 +17,7 @@ namespace otodikfeladat
     {
 
         BindingList<RateData> Rates = new BindingList<RateData>();
+        public string result2;
 
         public Form1()
         {
@@ -23,6 +25,7 @@ namespace otodikfeladat
 
             dataGridView1.DataSource = Rates;
             hivas();
+            feldolgozas();
         }
 
         void hivas()
@@ -39,6 +42,30 @@ namespace otodikfeladat
             var response = mnbService.GetExchangeRates(request);
 
             var result = response.GetExchangeRatesResult;
+            result2 = result;
+        }
+
+        void feldolgozas()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(result2);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rate = new RateData();
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+
+                Rates.Add(rate);
+            }
         }
     }
 }
