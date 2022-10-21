@@ -19,10 +19,28 @@ namespace otodikfeladat
 
         BindingList<RateData> Rates = new BindingList<RateData>();
         public string result2;
+        //BindingList<string> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
+
+            /*var mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+
+            var xml2 = new XmlDocument();
+            xml2.LoadXml(result);
+
+            foreach (XmlElement element in xml2.DocumentElement)
+            {
+                var rate2 = new RateData();
+                Currencies.Add(rate2.ToString());
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate2.Currency = childElement.GetAttribute("curr");
+            }*/
 
             RefreshData();
         }
@@ -91,6 +109,7 @@ namespace otodikfeladat
         void RefreshData()
         {
             Rates.Clear();
+            //comboBox1.DataSource = Currencies;
             dataGridView1.DataSource = Rates;
             hivas();
             megjelenites();
