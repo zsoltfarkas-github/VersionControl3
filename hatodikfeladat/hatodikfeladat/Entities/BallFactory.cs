@@ -11,7 +11,7 @@ namespace hatodikfeladat.Entities
     {
         public Toy CreateNew()
         {
-            return new Car();
+            return new Ball();
         }
     }
 }
