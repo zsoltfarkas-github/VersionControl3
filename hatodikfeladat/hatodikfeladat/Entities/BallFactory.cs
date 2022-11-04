@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace hatodikfeladat.Entities
 {
-    class BallFactroy
+    public class BallFactory
     {
         public Ball CreateNew()
         {
