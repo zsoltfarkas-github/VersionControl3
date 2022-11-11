@@ -74,17 +74,29 @@ namespace hetedikfeladat
         {
             SaveFileDialog sfd = new SaveFileDialog();
 
+            sfd.Filter = Comma Seperated Values (.csv).csv;
+
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter sw = new StreamWriter(sfd.FileName);
+                using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8)) 
+                {
+                    int i = 1;
+                    sw.Write(Időszak);
+                    sw.Write(;);
+                    sw.Write(Nyereség);
 
-                sw.Write("Időszak");
-                sw.Write("");
-                sw.Write("Nyereség");
+                    foreach (var ny in Nyereségek)
+                    {
+                        sw.WriteLine();
+                        sw.Write(i.ToString());
+                        sw.Write(;);
+                        sw.Write(ny.ToString());
+                        i++;
+                    }
 
-                sw.Close();
+                }
             }
-
+            
             sfd.Dispose();
         }
     }
