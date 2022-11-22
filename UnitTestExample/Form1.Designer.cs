@@ -74,7 +74,7 @@
             this.dgwAccounts.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwAccounts.Location = new System.Drawing.Point(322, 11);
             this.dgwAccounts.Name = "dgwAccounts";
-            this.dgwAccounts.Size = new System.Drawing.Size(575, 140);
+            this.dgwAccounts.Size = new System.Drawing.Size(646, 212);
             this.dgwAccounts.TabIndex = 10;
             this.dgwAccounts.TabStop = false;
             // 
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 164);
+            this.ClientSize = new System.Drawing.Size(974, 236);
             this.Controls.Add(this.lblPasswordConfirm);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblEmail);
