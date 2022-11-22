@@ -10,7 +10,6 @@ namespace UnitTestExample.Test
 {
     public class AccountControllerTestFixture
     {
-
         [
             Test,
             TestCase("abcd1234", false),
@@ -25,6 +24,26 @@ namespace UnitTestExample.Test
 
             // act
             var actualResult = accountcontroller.ValidateEmail(email);
+
+            // assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [
+            Test,
+            TestCase("Egyjelszo", false),
+            TestCase("EGYJELSZO1", false),
+            TestCase("egyjelszo1", false),
+            TestCase("Egyjel1", false),
+            TestCase("Egyjelszo1", true)
+        ]
+        public void TestValidatePassword(string password, bool expectedResult)
+        {
+            // arrange
+            var accountcontroller = new AccountController();
+
+            // act
+            var actualResult = accountcontroller.ValidatePassword(password);
 
             // assert
             Assert.AreEqual(expectedResult, actualResult);
