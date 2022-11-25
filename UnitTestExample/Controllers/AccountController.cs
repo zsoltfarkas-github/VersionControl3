@@ -52,7 +52,7 @@ namespace UnitTestExample.Controllers
         {
             return Regex.IsMatch(
                 password,
-                @"^(?!.*[\s])(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"); // branch checkout teszt
+                @"^(?!.*[\s])(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"); 
         }
     }
 }
