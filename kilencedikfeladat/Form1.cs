@@ -31,9 +31,10 @@ namespace kilencedikfeladat
 
             for (int year = 2005; year <= 2024; year++)
             {
+
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    SimStep(year, );
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -56,18 +57,17 @@ namespace kilencedikfeladat
                 double pDeath = (from x in DeathProbabilities
                                  where x.Gender == person.Gender && x.Kor == age
                                  select x.P).FirstOrDefault();
-                // Meghal a személy?
+
                 if (rng.NextDouble() <= pDeath)
                     person.IsAlive = false;
 
-                //Születés kezelése - csak az élő nők szülnek
                 if (person.IsAlive && person.Gender == Gender.Female)
                 {
-                    //Szülési valószínűség kikeresése
+
                     double pBirth = (from x in BirthProbabilities
                                      where x.Kor == age
                                      select x.P).FirstOrDefault();
-                    //Születik gyermek?
+
                     if (rng.NextDouble() <= pBirth)
                     {
                         Person újszülött = new Person();
