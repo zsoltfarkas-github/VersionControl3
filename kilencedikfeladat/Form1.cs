@@ -19,17 +19,22 @@ namespace kilencedikfeladat
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
+        List<Person> male = new List<Person>();
+        List<Person> female = new List<Person>();
+
         Random rng = new Random(1234);
 
         public Form1()
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Windows\Temp\nép.csv");
-            BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
-            DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
+            
 
-            for (int year = 2005; year <= 2024; year++)
+        }
+
+        private void Simulation()
+        {
+            for (int year = 2005; year <= numericUpDown1.Value; year++)
             {
 
                 for (int i = 0; i < Population.Count; i++)
@@ -46,9 +51,11 @@ namespace kilencedikfeladat
                 Console.WriteLine(
                     string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
 
+
             }
         }
-            private void SimStep(int year, Person person)
+
+        private void SimStep(int year, Person person)
             {
                 if (!person.IsAlive) return;
 
@@ -77,13 +84,15 @@ namespace kilencedikfeladat
                         Population.Add(újszülött);
                     }
                 }
+
+            
             }
 
-        public List<Person> GetPopulation(string csvpath)
+        public List<Person> GetPopulation(string path)
         {
             List<Person> population = new List<Person>();
 
-            using (StreamReader sr = new StreamReader(csvpath, Encoding.Default))
+            using (StreamReader sr = new StreamReader(textBox1.Text.ToString(), Encoding.Default))
             {
                 while (!sr.EndOfStream)
                 {
@@ -142,5 +151,32 @@ namespace kilencedikfeladat
             return getdeathprobabilities;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            male.Clear();
+            female.Clear();
+            richTextBox1.Clear();
+            Population = GetPopulation(textBox1.Text.ToString());
+            BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
+            DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
+            Simulation();
+            DisplayResults();
+        }
+
+        private void DisplayResults()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string path = Path.GetFullPath(@"C:\Windows\Temp\nép.csv");
+                textBox1.Text = path;
+            }
+        }
     }
 }
