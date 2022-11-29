@@ -19,8 +19,8 @@ namespace kilencedikfeladat
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
-        List<Person> male = new List<Person>();
-        List<Person> female = new List<Person>();
+        List<int> male = new List<int>();
+        List<int> female = new List<int>();
 
         Random rng = new Random(1234);
 
@@ -48,11 +48,17 @@ namespace kilencedikfeladat
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
-                Console.WriteLine(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
 
-
+                int j = 0;
+                int evszam = 2005;
+                male[j] = nbrOfMales;
+                female[j] = nbrOfFemales;
+                evszam++;
+                j++;
             }
+
+            
+
         }
 
         private void SimStep(int year, Person person)
